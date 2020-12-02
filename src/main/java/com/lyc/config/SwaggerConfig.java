@@ -18,10 +18,11 @@ public class SwaggerConfig {
   // 配置swagger的docket的bean实例
   @Bean
   public Docket docket() {
-    return new Docket(DocumentationType.SWAGGER_2).groupName("lyc")
+    return new Docket(DocumentationType.SWAGGER_2)
+        .groupName("lyc")
         .apiInfo(apiInfo())
-//        是否启用swagger  false ：swagger不能在游览器中访问
-//        .enable(false)
+        // 是否启用swagger  false ：swagger不能在游览器中访问
+        // .enable(false)
         .select()
         // RequestHandlerSelectors 配置了扫描接口的方式
         // basePackage  指定要扫描的包
@@ -31,7 +32,7 @@ public class SwaggerConfig {
         // withMethodAnnotation
         .apis(RequestHandlerSelectors.basePackage("com.lyc.controller"))
         // 过滤什么路径
-//        .paths(PathSelectors.ant("/lyc/**"))
+        //        .paths(PathSelectors.ant("/lyc/**"))
         .build();
   }
 

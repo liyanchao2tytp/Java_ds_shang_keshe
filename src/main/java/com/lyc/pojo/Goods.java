@@ -11,13 +11,13 @@ import lombok.*;
 @ToString
 public class Goods {
   @ApiModelProperty("主键")
-    private String goodsId;
+    private Integer goodsId;
   @ApiModelProperty("货物名")
     private String goodsName;
   @ApiModelProperty("价格")
-    private String goodsPrice;
+    private Float goodsPrice;
   @ApiModelProperty("数量")
-    private String goodsNum;
+    private Integer goodsNum;
   @ApiModelProperty("供应商外键")
     private Integer supId;
   @ApiModelProperty("警告数量")

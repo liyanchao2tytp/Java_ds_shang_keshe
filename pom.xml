@@ -18,6 +18,23 @@
     </properties>
 
     <dependencies>
+<!--   jwt token 单点登录 数据校验   -->
+      <dependency>
+        <groupId>com.auth0</groupId>
+        <artifactId>java-jwt</artifactId>
+        <version>3.4.0</version>
+      </dependency>
+<!--   引入druid   -->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid</artifactId>
+        <version>1.1.19</version>
+      </dependency>
+<!--      <dependency>-->
+<!--        <groupId>com.alibaba</groupId>-->
+<!--        <artifactId>fastjson</artifactId>-->
+<!--        <version>1.2.73</version>-->
+<!--      </dependency>-->
 <!--    lombok    -->
         <dependency>
             <groupId>org.projectlombok</groupId>
