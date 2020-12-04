@@ -3,7 +3,7 @@ package com.lyc.pojo;
 import io.swagger.annotations.*;
 import lombok.*;
 
-//@Api(注释)
+// @Api(注释)
 @ApiModel("货物实体类")
 @Data
 @AllArgsConstructor
@@ -11,15 +11,24 @@ import lombok.*;
 @ToString
 public class Goods {
   @ApiModelProperty("主键")
-    private Integer goodsId;
+  private Integer goodsId;
+
   @ApiModelProperty("货物名")
-    private String goodsName;
+  private String goodsName;
+
   @ApiModelProperty("价格")
-    private Float goodsPrice;
+  private Float goodsPrice;
+
   @ApiModelProperty("数量")
-    private Integer goodsNum;
-  @ApiModelProperty("供应商外键")
-    private Integer supId;
+  private Integer goodsNum;
+
   @ApiModelProperty("警告数量")
-    private Integer warnNum;
+  private Integer warnNum;
+
+  @ApiModelProperty("是否在回收站")
+  private Integer isDelete;
+
+  @ApiModelProperty("供应商外键")
+  private Integer supId;
+  private Supplier supplier;
 }

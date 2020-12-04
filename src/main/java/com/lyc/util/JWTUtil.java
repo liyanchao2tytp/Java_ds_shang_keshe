@@ -10,34 +10,29 @@ public class JWTUtil {
 
   /**
    * 生成token
-   * @param map   传入payload
-   * @return    返回token
+   *
+   * @param map 传入payload
+   * @return 返回token
    */
-  public static String getToken(Map<String,String> map){
-    JWTCreator.Builder builder = JWT.create();
-    map.forEach((k,v)->{
-      builder.withClaim(k,v);
-    });
+  public static String getToken(Map<String, String> map) {
     Calendar instance = Calendar.getInstance();
-    instance.add(Calendar.SECOND,7);
+    instance.add(Calendar.DATE, 7);   // 指定token 过期时间
+
+    JWTCreator.Builder builder = JWT.create();
+    map.forEach((k, v) -> {
+      builder.withClaim(k, v);
+    });
     builder.withExpiresAt(instance.getTime());
     return builder.sign(Algorithm.HMAC256(TOKEN)).toString();
   }
 
   /**
-   * 验证token
-   * @param token
-   */
-  public static void verify(String token){
-    JWT.require(Algorithm.HMAC256(TOKEN)).build().verify(token);
-  }
-
-  /**
    * 获取token中的payload
+   *
    * @param token
    * @return
    */
-  public static DecodedJWT getToken(String token){
+  public static DecodedJWT verify(String token) {
     return JWT.require(Algorithm.HMAC256(TOKEN)).build().verify(token);
   }
 }

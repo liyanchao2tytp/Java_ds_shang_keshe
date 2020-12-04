@@ -3,11 +3,13 @@ package com.lyc.mapper;
 import com.lyc.pojo.*;
 import java.util.*;
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.ResultMap;
+import org.apache.ibatis.mapping.*;
 import org.springframework.stereotype.*;
 
 @Repository
 public interface GoodsMapper {
-  @Select("select * from t_goods")
+  @Select("select * from t_goods where is_delete = 0")
   @Results(
       id = "goodsMap",
       value = {
@@ -16,11 +18,19 @@ public interface GoodsMapper {
         @Result(column = "goods_price", property = "goodsPrice"),
         @Result(column = "goods_num", property = "goodsNum"),
         @Result(column = "sup_id", property = "supId"),
-        @Result(column = "warn_num", property = "warnNum")
+        @Result(
+            property = "supplier",
+            column = "sup_id",
+            one =
+                @One(
+                    select = "com.lyc.mapper.SupplierMapper.findSupplierById",
+                    fetchType = FetchType.EAGER)),
+        @Result(column = "warn_num", property = "warnNum"),
+        @Result(column = "is_delete",property = "isDelete")
       })
   List<Goods> findAllGoods();
 
-  @Select("select * from t_goods where goods_id = #{id} ")
+  @Select("select * from t_goods where goods_id = #{id} and is_delete = 0")
   @ResultMap("goodsMap")
   Goods findGoodsById(@Param("id") int id);
 
@@ -35,7 +45,11 @@ public interface GoodsMapper {
   int insertGoods(@Param("goods") Goods goods);
 
   @Update(
-      "update t_goods set goodsName=#{goods.goodsName},goodsPrice=#{goods.goodsPrice},goodsNum=#{goods.goodsNum},supId=#{goods.supId},warnNum=#{goods.warnNum}")
+      "update t_goods set goods_name=#{goods.goodsName},goods_price=#{goods.goodsPrice},goods_num=#{goods.goodsNum},sup_id=#{goods.supId},warn_num=#{goods.warnNum} where goods_id=#{goods.goodsId}")
   @ResultMap("goodsMap")
-  void update(@Param("goods") Goods goods);
+  void updateGoods(@Param("goods") Goods goods);
+
+  @Update("update t_goods set is_delete = #{ynRecycle} where goods_id = #{id}")
+  @ResultMap("goodsMap")
+  void toRecycle(@Param("id")int id,@Param("ynRecycle")int ynRecycle);
 }

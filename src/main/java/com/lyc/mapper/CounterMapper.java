@@ -18,7 +18,7 @@ public interface CounterMapper {
   void insertCounter(@Param("counter") Counter counter);
 
   @Update(
-      "update t_counter set sale_price=#{salePrice},counter_num=#{counterNum},calarm_num=#{calarmNum}")
+      "updateGoods t_counter set sale_price=#{salePrice},counter_num=#{counterNum},calarm_num=#{calarmNum}")
   void update(@Param("counter") Counter counter);
 
 

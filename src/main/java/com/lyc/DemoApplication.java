@@ -18,7 +18,6 @@ public class DemoApplication {
   @Bean
   public static BeanFactoryPostProcessor beanFactoryPostProcessor() {
     return new BeanFactoryPostProcessor() {
-
       @Override
       public void postProcessBeanFactory(
           ConfigurableListableBeanFactory beanFactory) throws BeansException {
@@ -29,4 +28,5 @@ public class DemoApplication {
       }
     };
   }
+
 }

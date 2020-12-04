@@ -19,4 +19,6 @@ public class User {
   private Integer career;
   @ApiModelProperty("对应职业的外键")
   private Integer careerId;
+
+  private Object obj;
 }
