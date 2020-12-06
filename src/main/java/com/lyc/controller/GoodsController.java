@@ -70,4 +70,11 @@ public class GoodsController {
       e.printStackTrace();
     }
   }
+
+  @ApiOperation("模糊查询")
+  @GetMapping("/goods/fuzzy")
+  public List<Goods> fuzzySearch(@RequestParam("name")String name){
+    log.info("[{}]",name);
+    return goodsMapper.fuzzySearch(name);
+  }
 }

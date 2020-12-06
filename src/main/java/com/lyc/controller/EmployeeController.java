@@ -42,4 +42,9 @@ public class EmployeeController {
   public void alterEmp(@RequestBody LinkedHashMap<String,String> body){
     employeeMapper.alterEmp(Integer.parseInt(body.get("id")),body.get("username"),body.get("post"),body.get("phone"));
   }
+  @ApiOperation("删除指定雇员")
+  @DeleteMapping("/emp")
+  public void  deleteEmp(@RequestBody LinkedHashMap<String,Integer> body){
+    employeeMapper.deleteEmp(body.get("id"));
+  }
 }

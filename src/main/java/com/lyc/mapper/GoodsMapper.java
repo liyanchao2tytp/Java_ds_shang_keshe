@@ -9,6 +9,7 @@ import org.springframework.stereotype.*;
 
 @Repository
 public interface GoodsMapper {
+
   @Select("select * from t_goods where is_delete = 0")
   @Results(
       id = "goodsMap",
@@ -33,6 +34,10 @@ public interface GoodsMapper {
   @Select("select * from t_goods where goods_id = #{id} and is_delete = 0")
   @ResultMap("goodsMap")
   Goods findGoodsById(@Param("id") int id);
+
+  @Select({"select * from t_goods where goods_name like #{name}"})
+  @ResultMap("goodsMap")
+  List<Goods> fuzzySearch (@Param("name")String name);
 
   @Delete("delete from t_goods where goods_id = #{id}")
   @ResultMap("goodsMap")

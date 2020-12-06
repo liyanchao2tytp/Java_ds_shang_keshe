@@ -39,5 +39,10 @@ public class SupplierController {
   public void alter(@RequestBody LinkedHashMap<String,String> body){
     supplierMapper.alterSupplier(Integer.parseInt(body.get("id")),body.get("supplier"),body.get("contact"),body.get("phone"),body.get("address"));
   }
+  @ApiOperation("删除供应商")
+  @DeleteMapping("/supplier")
+  public void delete(@RequestBody LinkedHashMap<String,Integer> body){
+    supplierMapper.deleteSupplier(body.get("id"));
+  }
 
 }

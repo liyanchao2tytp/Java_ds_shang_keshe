@@ -28,4 +28,8 @@ public interface UserMapper {
   @Delete("delete from t_user where id = #{id}")
   @ResultMap("userMap")
   void deleteUser(@Param("id") int id);
+
+  @Update("update t_user set username=#{username}, password=#{password}, career=#{career}, careerId=#{careerId}")
+  @ResultMap("userMap")
+  void alterUser(@Param("username") String usrName,@Param("password")String psWord,@Param("career")int career,@Param("careerId")int careerId);
 }

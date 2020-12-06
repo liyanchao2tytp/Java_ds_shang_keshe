@@ -18,4 +18,7 @@ public interface EmployeeMapper {
   void addEmp(@Param("emp") Employee emp);
   @Update("update t_employee set emp_name=#{empName}, emp_post=#{empPost}, emp_phone=#{empPhone} where emp_id=#{empId}")
   void alterEmp(@Param("empId") int empId,@Param("empName")String empName,@Param("empPost")String empPost,@Param("empPhone")String empPhone);
+
+  @Delete("delete from t_employee where emp_id = #{id}")
+  void deleteEmp(@Param("id") int id);
 }

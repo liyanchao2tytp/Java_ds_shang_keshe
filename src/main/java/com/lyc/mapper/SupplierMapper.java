@@ -19,4 +19,7 @@ public interface SupplierMapper {
   @Update("update t_supplier set sup_name=#{supName}, sup_contact=#{supContact}, sup_phone=#{supPhone}, adress=#{adress} where sup_id=#{id}")
   void alterSupplier(@Param("id") int id,@Param("supName")String name,@Param("supContact")String contact,@Param("supPhone") String phone,@Param("adress")String address);
 
+  @Delete("delete from t_supplier where sup_id=#{id}")
+  void deleteSupplier(@Param("id")int id);
+
 }
