@@ -42,9 +42,10 @@ public class GoodsController {
 
   @ApiOperation("删除商品")
   @DeleteMapping("/goods")
-  public void deleteGoods(@RequestParam("id") int id) {
-    goodsMapper.deleteGoods(id);
+  public void deleteGoods(@RequestBody LinkedHashMap<String,Integer> body) {
+    goodsMapper.deleteGoods(body.get("id"));
   }
+
 
   @ApiOperation("修改商品")
   @PutMapping("/goods")
@@ -70,11 +71,16 @@ public class GoodsController {
       e.printStackTrace();
     }
   }
+  @ApiOperation("查询is_delete值为true的")
+  @GetMapping("/recycle")
+  public List<Goods> getRecycle(){
+    return goodsMapper.selectRecycle();
+  }
 
   @ApiOperation("模糊查询")
   @GetMapping("/goods/fuzzy")
-  public List<Goods> fuzzySearch(@RequestParam("name")String name){
-    log.info("[{}]",name);
+  public List<Goods> fuzzySearch(@RequestParam("name") String name){
     return goodsMapper.fuzzySearch(name);
   }
+
 }

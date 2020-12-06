@@ -35,9 +35,13 @@ public interface GoodsMapper {
   @ResultMap("goodsMap")
   Goods findGoodsById(@Param("id") int id);
 
-  @Select({"select * from t_goods where goods_name like #{name}"})
+  @Select({"select * from t_goods where goods_name like concat('%',#{name},'%')"})
   @ResultMap("goodsMap")
   List<Goods> fuzzySearch (@Param("name")String name);
+
+  @Select("select * from t_goods where is_delete = 1")
+  @ResultMap("goodsMap")
+  List<Goods> selectRecycle();
 
   @Delete("delete from t_goods where goods_id = #{id}")
   @ResultMap("goodsMap")
@@ -57,4 +61,8 @@ public interface GoodsMapper {
   @Update("update t_goods set is_delete = #{ynRecycle} where goods_id = #{id}")
   @ResultMap("goodsMap")
   void toRecycle(@Param("id")int id,@Param("ynRecycle")int ynRecycle);
+
+
+
+
 }
