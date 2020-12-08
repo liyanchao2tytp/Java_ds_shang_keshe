@@ -4,6 +4,7 @@ import com.lyc.pojo.*;
 import java.util.*;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.*;
+import org.springframework.web.bind.annotation.*;
 
 @Repository
 public interface UserMapper {
@@ -13,7 +14,6 @@ public interface UserMapper {
       @Result(column = "username",property = "userName"),
       @Result(column = "password",property = "passWord"),
       @Result(column = "career",property = "career"),
-      @Result(column = "careerId",property = "careerId")
   })
   List<User> findAllUser();
 
@@ -29,7 +29,11 @@ public interface UserMapper {
   @ResultMap("userMap")
   void deleteUser(@Param("id") int id);
 
-  @Update("update t_user set username=#{username}, password=#{password}, career=#{career}, careerId=#{careerId}")
+  @Update("update t_user set username=#{username}, password=#{password}, career=#{career} where id = #{id}")
   @ResultMap("userMap")
-  void alterUser(@Param("username") String usrName,@Param("password")String psWord,@Param("career")int career,@Param("careerId")int careerId);
+  void alterUser(@Param("username") String usrName,@Param("password")String psWord,@Param("career")int career,@Param("id") int id);
+
+  @Insert("insert into t_user(username, password, career) values(#{name}, #{word}, #{career})")
+  @ResultMap("userMap")
+  void add(@Param("name")String name,@Param("word")String word,@Param("career")Integer career);
 }

@@ -15,10 +15,6 @@ public class User {
   private String userName;
   @ApiModelProperty("密码")
   private String passWord;
-  @ApiModelProperty("职业")
+  @ApiModelProperty("权限")
   private Integer career;
-  @ApiModelProperty("对应职业的外键")
-  private Integer careerId;
-
-  private Object obj;
 }

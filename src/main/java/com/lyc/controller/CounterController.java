@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.*;
 public class CounterController {
   @Autowired private CounterMapper counterMapper;
   @Autowired private CounterService counterService;
-  @ApiOperation("查询所有柜台物品")
+
+  @ApiOperation("查询所有柜台商品")
   @GetMapping("/counter")
   public List<Counter> getAllCounter(){
     return counterMapper.findAllCounter();

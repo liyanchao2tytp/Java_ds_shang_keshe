@@ -1,7 +1,9 @@
 package com.lyc.controller;
 
+import com.github.pagehelper.*;
 import com.lyc.mapper.*;
 import com.lyc.pojo.*;
+import com.lyc.service.*;
 import io.swagger.annotations.*;
 import java.util.*;
 import lombok.extern.slf4j.*;
@@ -11,14 +13,20 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @Slf4j
 public class EmployeeController {
-  @Autowired
-  private EmployeeMapper employeeMapper;
+  @Autowired private EmployeeMapper employeeMapper;
+  @Autowired private EmployeeService employeeService;
 
   @ApiOperation("查询所有雇员")
   @GetMapping("/emp/list")
-  public List<Employee> getUser(){
-    return employeeMapper.findAllEmp();
+  public Map getUser(@RequestParam(value = "page",defaultValue = "1")int page,@RequestParam(value = "size",defaultValue = "10")int size){
+    return employeeService.getAllEmpAndNum(page,size);
   }
+//    public Map getUser(@RequestParam( "page")int page,@RequestParam( "size")int size){
+//    log.info("[{}] [{}]",page,size);
+//    return employeeService.getAllEmpAndNum(page,size);
+//  }
+
+
 
   @ApiOperation("增加一个新雇员")
   @PostMapping("/emp")

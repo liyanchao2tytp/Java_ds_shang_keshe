@@ -19,4 +19,5 @@ public class Counter {
   private Integer counterNum ;
   @ApiModelProperty("警告数量")
   private Integer calarmNum;
+
 }

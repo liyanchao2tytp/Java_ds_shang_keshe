@@ -23,17 +23,20 @@ public class HelloController {
     System.out.println(goodsMapper.findGoodsById(1));
     return goodsMapper.findGoodsById(1);
   }
-
+  @ApiOperation("查询登录权限")
+  @GetMapping("/login")
+  public Integer checkPower(HttpServletRequest request){
+    return Integer.parseInt(JWTUtil.verify(request.getHeader("token")).getClaim("career").asString());
+  }
   @ApiOperation("登录")
   @PostMapping("/login")
-  public Map<String,Object> checkLogin(@RequestBody LinkedHashMap<String, String> body, HttpSession session) {
+  public Map<String,Object> checkLogin(@RequestBody LinkedHashMap<String, String> body) {
     Map<String,Object> map = new HashMap<>();
     try{
       User user = userMapper.checkLogin(body.get("userName"), body.get("passWord"));
       Map<String, String> payload = new HashMap<>();
       payload.put("id", String.valueOf(user.getId()));
       payload.put("career",String.valueOf(user.getCareer()));
-      payload.put("careerId", String.valueOf(user.getCareerId()));
       String token = JWTUtil.getToken(payload);
       map.put("state", true);
       map.put("msg", "success");

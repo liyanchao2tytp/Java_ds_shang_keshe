@@ -13,6 +13,9 @@ public interface EmployeeMapper {
   @Select("select * from t_employee where emp_id = #{id}")
   Employee findEmpById(@Param("id") int id);
 
+  @Select("select count(*) from t_employee")
+  Integer CountNum();
+
   @Insert(
       "insert into t_employee(emp_name, emp_post, emp_phone) values(#{emp.empName}, #{emp.empPost}, #{emp.empPhone})")
   void addEmp(@Param("emp") Employee emp);
