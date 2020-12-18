@@ -31,25 +31,25 @@ public interface GoodsMapper {
       })
   List<Goods> findAllGoods();
 
-  @Select("select * from t_goods where goods_id = #{id} and is_delete = 0")
+  @Select("SELECT * FROM t_goods where goods_id = #{id} and is_delete = 0")
   @ResultMap("goodsMap")
   Goods findGoodsById(@Param("id") int id);
 
-  @Select({"select * from t_goods where goods_name like concat('%',#{name},'%')"})
+  @Select({"SELECT * FROM t_goods WHERE goods_name like concat('%',#{name},'%')"})
   @ResultMap("goodsMap")
   List<Goods> fuzzySearch (@Param("name")String name);
 
-  @Select("select * from t_goods where is_delete = 1")
+  @Select("SELECT * FROM t_goods WHERE is_delete = 1")
   @ResultMap("goodsMap")
   List<Goods> selectRecycle();
 
-  @Delete("delete from t_goods where goods_id = #{id}")
+  @Delete("delete FROM t_goods WHERE goods_id = #{id}")
   @ResultMap("goodsMap")
   void deleteGoods(@Param("id") int id);
 
   @Insert(
-      "insert into t_goods(goods_name, goods_price, goods_num, sup_id, warn_num)"
-          + " values(#{goods.goodsName},#{goods.goodsPrice},#{goods.goodsNum},#{goods.supId},#{goods.warnNum})")
+      "INSERT INTO t_goods(goods_name, goods_price, goods_num, sup_id, warn_num)"
+          + " VALUES(#{goods.goodsName},#{goods.goodsPrice},#{goods.goodsNum},#{goods.supId},#{goods.warnNum})")
   @ResultMap("goodsMap")
   int insertGoods(@Param("goods") Goods goods);
 

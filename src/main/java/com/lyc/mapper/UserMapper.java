@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Repository
 public interface UserMapper {
-  @Select("select * from t_user")
+  @Select("SELECT * FROM t_user")
   @Results(id = "userMap",value = {
       @Result(column = "id",property = "id"),
       @Result(column = "username",property = "userName"),
@@ -17,23 +17,23 @@ public interface UserMapper {
   })
   List<User> findAllUser();
 
-  @Select("select * from t_user where id = #{id}")
+  @Select("SELECT * from t_user WHERE id = #{id}")
   @ResultMap("userMap")
   User findUser(@Param("id") int id);
 
-  @Select("select * from t_user where username = #{userName} and password = #{passWord}")
+  @Select("SELECT * FROM t_user WHERE username = #{userName} AND password = #{passWord}")
   @ResultMap("userMap")
   User checkLogin(@Param("userName") String userName, @Param("passWord") String passWord);
 
-  @Delete("delete from t_user where id = #{id}")
+  @Delete("DELETE FROM t_user WHERE id = #{id}")
   @ResultMap("userMap")
   void deleteUser(@Param("id") int id);
 
-  @Update("update t_user set username=#{username}, password=#{password}, career=#{career} where id = #{id}")
+  @Update("UPDATE t_user SET username=#{username}, password=#{password}, career=#{career} WHERE id = #{id}")
   @ResultMap("userMap")
   void alterUser(@Param("username") String usrName,@Param("password")String psWord,@Param("career")int career,@Param("id") int id);
 
-  @Insert("insert into t_user(username, password, career) values(#{name}, #{word}, #{career})")
+  @Insert("INSERT INTO t_user(username, password, career) VALUES(#{name}, #{word}, #{career})")
   @ResultMap("userMap")
   void add(@Param("name")String name,@Param("word")String word,@Param("career")Integer career);
 }

@@ -1,15 +1,12 @@
 package com.lyc.controller;
 
-import com.auth0.jwt.*;
 import com.lyc.mapper.*;
 import com.lyc.pojo.*;
 import com.lyc.util.*;
 import io.swagger.annotations.*;
 import java.util.*;
 import javax.servlet.http.*;
-import org.apache.ibatis.jdbc.*;
 import org.springframework.beans.factory.annotation.*;
-import org.springframework.util.*;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,11 +14,15 @@ public class HelloController {
   @Autowired private UserMapper userMapper;
   @Autowired private GoodsMapper goodsMapper;
 
-  @ApiOperation("根据id获取货物")
-  @PostMapping("/user")
-  public Goods getGoods(@ApiParam("货物id") String id) {
-    System.out.println(goodsMapper.findGoodsById(1));
-    return goodsMapper.findGoodsById(1);
+  @ApiOperation("查询token中的个人信息")
+  @GetMapping("/user")
+  public Map getTokenContent(HttpServletRequest res) {
+    HashMap<String, String> map = new HashMap<>();
+    int id = Integer.parseInt(JWTUtil.verify(res.getHeader("token")).getClaim("id").asString());
+    User user = userMapper.findUser(id);
+    map.put("name", user.getUserName());
+    map.put("career", user.getCareer().toString());
+    return map;
   }
   @ApiOperation("查询登录权限")
   @GetMapping("/login")

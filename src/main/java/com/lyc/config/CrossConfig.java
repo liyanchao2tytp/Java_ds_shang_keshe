@@ -6,7 +6,7 @@ import org.springframework.web.cors.*;
 
 import org.springframework.web.filter.*;
 import org.springframework.web.servlet.config.annotation.*;
-//
+
 //@Configuration
 //public class CrossConfig {
 //  @Bean
@@ -42,8 +42,7 @@ public class CrossConfig {
     //放行哪些原始域(头部信息)
     config.addAllowedHeader("*");
     //暴露哪些头部信息（因为跨域访问默认不能获取全部头部信息）
-//        config.addExposedHeader("*");
-
+//     config.addExposedHeader("*");
     config.addExposedHeader("Content-Type");
     config.addExposedHeader( "X-Requested-With");
     config.addExposedHeader("accept");
