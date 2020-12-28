@@ -35,7 +35,9 @@ public interface GoodsMapper {
   @ResultMap("goodsMap")
   Goods findGoodsById(@Param("id") int id);
 
-  @Select({"SELECT * FROM t_goods WHERE goods_name like concat('%',#{name},'%')"})
+//  @Select({"SELECT * FROM t_goods WHERE goods_name like concat('%',#{name},'%')"})
+  @Select("SELECT * FROM t_goods WHERE goods_name like '%'||#{name}||'%'")
+
   @ResultMap("goodsMap")
   List<Goods> fuzzySearch (@Param("name")String name);
 

@@ -6,7 +6,6 @@ import com.lyc.service.*;
 import io.swagger.annotations.*;
 import java.util.*;
 import lombok.extern.slf4j.*;
-import org.apache.ibatis.annotations.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.web.bind.annotation.*;
 

@@ -4,7 +4,6 @@ import com.lyc.pojo.*;
 import java.util.*;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.*;
-import org.springframework.web.bind.annotation.*;
 
 @Repository
 public interface UserMapper {

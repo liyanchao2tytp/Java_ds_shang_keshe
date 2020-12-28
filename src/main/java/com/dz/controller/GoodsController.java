@@ -16,6 +16,7 @@ public class GoodsController {
   @ApiOperation("查询所有商品")
   @GetMapping("/goods/list")
   public List<Goods> findAllGoods() {
+    log.info("[{}}]",goodsMapper.findAllGoods());
     return goodsMapper.findAllGoods();
   }
 
