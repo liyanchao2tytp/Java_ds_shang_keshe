@@ -1,4 +1,4 @@
-package com.lyc;
+package com.dz;
 
 import org.mybatis.spring.annotation.*;
 import org.springframework.beans.*;
@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.web.servlet.*;
 import org.springframework.context.annotation.*;
 
 @SpringBootApplication
-@MapperScan("com.lyc.mapper")
+@MapperScan("com.dz.mapper")
 public class DemoApplication {
 
   public static void main(String[] args) {

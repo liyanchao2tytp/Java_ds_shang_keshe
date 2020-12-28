@@ -1,4 +1,4 @@
-package com.lyc.pojo;
+package com.dz.pojo;
 
 import io.swagger.annotations.*;
 import lombok.*;

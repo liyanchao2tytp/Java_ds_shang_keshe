@@ -1,7 +1,7 @@
-package com.lyc.controller;
+package com.dz.controller;
 
-import com.lyc.mapper.*;
-import com.lyc.pojo.*;
+import com.dz.mapper.*;
+import com.dz.pojo.*;
 import io.swagger.annotations.*;
 import java.util.*;
 import lombok.extern.slf4j.*;

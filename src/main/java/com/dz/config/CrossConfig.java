@@ -1,4 +1,4 @@
-package com.lyc.config;
+package com.dz.config;
 
 import org.springframework.context.annotation.*;
 import org.springframework.web.cors.*;

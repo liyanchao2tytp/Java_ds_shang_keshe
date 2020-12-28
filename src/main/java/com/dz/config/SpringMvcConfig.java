@@ -1,6 +1,6 @@
-package com.lyc.config;
+package com.dz.config;
 
-import com.lyc.interceptor.*;
+import com.dz.interceptor.*;
 import org.springframework.context.annotation.*;
 import org.springframework.web.servlet.config.annotation.*;
 

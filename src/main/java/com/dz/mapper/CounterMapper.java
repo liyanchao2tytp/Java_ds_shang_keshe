@@ -1,6 +1,6 @@
-package com.lyc.mapper;
+package com.dz.mapper;
 
-import com.lyc.pojo.*;
+import com.dz.pojo.*;
 import java.util.*;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.*;

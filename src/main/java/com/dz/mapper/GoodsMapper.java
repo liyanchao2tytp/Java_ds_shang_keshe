@@ -1,6 +1,6 @@
-package com.lyc.mapper;
+package com.dz.mapper;
 
-import com.lyc.pojo.*;
+import com.dz.pojo.*;
 import java.util.*;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.annotations.ResultMap;
@@ -24,7 +24,7 @@ public interface GoodsMapper {
             column = "sup_id",
             one =
                 @One(
-                    select = "com.lyc.mapper.SupplierMapper.findSupplierById",
+                    select = "com.dz.mapper.SupplierMapper.findSupplierById",
                     fetchType = FetchType.EAGER)),
         @Result(column = "warn_num", property = "warnNum"),
         @Result(column = "is_delete",property = "isDelete")

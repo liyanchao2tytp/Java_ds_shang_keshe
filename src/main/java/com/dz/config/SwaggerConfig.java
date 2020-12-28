@@ -1,4 +1,4 @@
-package com.lyc.config;
+package com.dz.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +19,7 @@ public class SwaggerConfig {
   @Bean
   public Docket docket() {
     return new Docket(DocumentationType.SWAGGER_2)
-        .groupName("lyc")
+        .groupName("dz")
         .apiInfo(apiInfo())
         // 是否启用swagger  false ：swagger不能在游览器中访问
         // .enable(false)
@@ -30,9 +30,9 @@ public class SwaggerConfig {
         // none() 不扫描
         // withClassAnnotation 扫描类上的
         // withMethodAnnotation
-        .apis(RequestHandlerSelectors.basePackage("com.lyc.controller"))
+        .apis(RequestHandlerSelectors.basePackage("com.dz.controller"))
         // 过滤什么路径
-        //        .paths(PathSelectors.ant("/lyc/**"))
+        //        .paths(PathSelectors.ant("/dz/**"))
         .build();
   }
 

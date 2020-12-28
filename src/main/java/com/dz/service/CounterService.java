@@ -1,7 +1,7 @@
-package com.lyc.service;
+package com.dz.service;
 
-import com.lyc.mapper.*;
-import com.lyc.pojo.*;
+import com.dz.mapper.*;
+import com.dz.pojo.*;
 import java.util.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
