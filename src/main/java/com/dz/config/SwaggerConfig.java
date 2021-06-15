@@ -22,7 +22,7 @@ public class SwaggerConfig {
         .groupName("dz")
         .apiInfo(apiInfo())
         // 是否启用swagger  false ：swagger不能在游览器中访问
-        // .enable(false)
+//        .enable(false)
         .select()
         // RequestHandlerSelectors 配置了扫描接口的方式
         // basePackage  指定要扫描的包

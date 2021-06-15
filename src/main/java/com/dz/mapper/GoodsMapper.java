@@ -34,10 +34,10 @@ public interface GoodsMapper {
   @Select("SELECT * FROM t_goods where goods_id = #{id} and is_delete = 0")
   @ResultMap("goodsMap")
   Goods findGoodsById(@Param("id") int id);
-
-//  @Select({"SELECT * FROM t_goods WHERE goods_name like concat('%',#{name},'%')"})
-  @Select("SELECT * FROM t_goods WHERE goods_name like '%'||#{name}||'%'")
-
+// Mysql
+  @Select({"SELECT * FROM t_goods WHERE goods_name like concat('%',#{name},'%') and is_delete = 0"})
+//  Oracle
+//  @Select("SELECT * FROM t_goods WHERE goods_name like '%'||#{name}||'%'")
   @ResultMap("goodsMap")
   List<Goods> fuzzySearch (@Param("name")String name);
 

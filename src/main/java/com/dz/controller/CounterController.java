@@ -37,7 +37,13 @@ public class CounterController {
   @ApiOperation("更改柜台商品信息")
   @PutMapping("/counter")
   public void alter(@RequestBody LinkedHashMap<String,String> body){
-     counterMapper.update(Integer.parseInt(body.get("id")),body.get("name"),Float.parseFloat(body.get("price")),Integer.parseInt(body.get("num")),Integer.parseInt(body.get("alarm")));
+    counterMapper.update(
+        Integer.parseInt(body.get("id")),
+        body.get("name"),
+        Float.parseFloat(body.get("price")),
+        Integer.parseInt(body.get("num")),
+        Integer.parseInt(body.get("alarm")));
+
   }
 
   @ApiOperation("新建柜台商品信息")

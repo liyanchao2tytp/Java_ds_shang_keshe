@@ -13,6 +13,7 @@ public interface UserMapper {
       @Result(column = "username",property = "userName"),
       @Result(column = "password",property = "passWord"),
       @Result(column = "career",property = "career"),
+      @Result(column = "post",property = "post")
   })
   List<User> findAllUser();
 
@@ -28,11 +29,24 @@ public interface UserMapper {
   @ResultMap("userMap")
   void deleteUser(@Param("id") int id);
 
-  @Update("UPDATE t_user SET username=#{username}, password=#{password}, career=#{career} WHERE id = #{id}")
+  @Update("UPDATE t_user SET username=#{username}, password=#{password}, career=#{career},post=#{post} WHERE id = #{id}")
   @ResultMap("userMap")
-  void alterUser(@Param("username") String usrName,@Param("password")String psWord,@Param("career")int career,@Param("id") int id);
+  void alterUser(@Param("username") String usrName,@Param("password")String psWord,@Param("career")int career,@Param("post")String post,@Param("id") int id);
 
-  @Insert("INSERT INTO t_user(username, password, career) VALUES(#{name}, #{word}, #{career})")
+  @Select("SELECT count(*) FROM t_user")
+  Integer CountNum();
+
+  @Insert(
+      "INSERT INTO t_user(username, password, career, post,signInDate) VALUES(#{name}, #{word}, #{career}, #{post},'')")
   @ResultMap("userMap")
-  void add(@Param("name")String name,@Param("word")String word,@Param("career")Integer career);
+  void add(
+      @Param("name") String name,
+      @Param("word") String word,
+      @Param("career") Integer career,
+      @Param("post") String post);
+  @Update("UPDATE t_user SET num=#{num},signInDate=#{signInDate} WHERE id = #{id}")
+  void signIn(@Param("id") int id,@Param("num")int num,@Param("signInDate")String signInDate);
+  @Select("SELECT signInDate FROM t_user WHERE id = #{id}")
+  String getRecentSignDate();
+
 }

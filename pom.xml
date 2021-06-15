@@ -83,15 +83,15 @@
         <version>2.1.0</version>
       </dependency>
 <!--   mysql的jdbc驱动   -->
-<!--      <dependency>-->
-<!--      <groupId>mysql</groupId>-->
-<!--      <artifactId>mysql-connector-java</artifactId>-->
-<!--    </dependency>-->
       <dependency>
-        <groupId>com.oracle</groupId>
-        <artifactId>ojdbc6</artifactId>
-        <version>11.2.0.3</version>
-      </dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+<!--      <dependency>-->
+<!--        <groupId>com.oracle</groupId>-->
+<!--        <artifactId>ojdbc6</artifactId>-->
+<!--        <version>11.2.0.3</version>-->
+<!--      </dependency>-->
     </dependencies>
 
     <build>

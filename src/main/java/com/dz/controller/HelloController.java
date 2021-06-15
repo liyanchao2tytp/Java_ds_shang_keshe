@@ -4,6 +4,7 @@ import com.dz.mapper.*;
 import com.dz.pojo.*;
 import com.dz.util.*;
 import io.swagger.annotations.*;
+import java.text.*;
 import java.util.*;
 import javax.servlet.http.*;
 import org.springframework.beans.factory.annotation.*;
@@ -42,6 +43,14 @@ public class HelloController {
       map.put("state", true);
       map.put("msg", "success");
       map.put("token", token);  //响应token
+//      登录成功后打卡
+      String nowDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+      if(user.getSignInDate().isEmpty() || !user.getSignInDate().substring(0,10).equals(nowDate.substring(0,10))){
+        userMapper.signIn(
+            user.getId(),user.getNum()+1,
+            nowDate
+        );
+      };
     }catch (Exception e){
       map.put("state",false);
       map.put("msg", e.getMessage());

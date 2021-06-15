@@ -17,4 +17,10 @@ public class User {
   private String passWord;
   @ApiModelProperty("权限")
   private Integer career;
+  @ApiModelProperty("职位")
+  private String post;
+  @ApiModelProperty("打卡次数")
+  private Integer num;
+  @ApiModelProperty("打卡时间")
+  private String signInDate;
 }
