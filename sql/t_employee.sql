@@ -1,0 +1,9 @@
+INSERT INTO `t_employee` (`emp_id`, `emp_name`, `emp_post`, `emp_phone`) VALUES (9, '李四', 'CEO', '324564536567');
+INSERT INTO `t_employee` (`emp_id`, `emp_name`, `emp_post`, `emp_phone`) VALUES (10, '王五', '人事部', '12355555555');
+INSERT INTO `t_employee` (`emp_id`, `emp_name`, `emp_post`, `emp_phone`) VALUES (11, '赵六', '码农', '1234234234');
+INSERT INTO `t_employee` (`emp_id`, `emp_name`, `emp_post`, `emp_phone`) VALUES (13, 'asdf', '普通人员', '12355555555');
+INSERT INTO `t_employee` (`emp_id`, `emp_name`, `emp_post`, `emp_phone`) VALUES (14, '李四', '普通人员', '12355555555');
+INSERT INTO `t_employee` (`emp_id`, `emp_name`, `emp_post`, `emp_phone`) VALUES (15, '李四', '普通人员', '12355555555');
+INSERT INTO `t_employee` (`emp_id`, `emp_name`, `emp_post`, `emp_phone`) VALUES (16, 'asdf', '普通人员', '4363456');
+INSERT INTO `t_employee` (`emp_id`, `emp_name`, `emp_post`, `emp_phone`) VALUES (19, '李四', '普通人员', '12355555555');
+INSERT INTO `t_employee` (`emp_id`, `emp_name`, `emp_post`, `emp_phone`) VALUES (20, '李四', 'CEO', '4363456');
